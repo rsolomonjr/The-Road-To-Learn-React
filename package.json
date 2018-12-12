@@ -1,0 +1,17 @@
+{
+  "name": "The-Road-To-Learn-React",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel": "^6.23.0",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3"
+  }
+}
