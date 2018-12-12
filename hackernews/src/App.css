@@ -1,7 +1,5 @@
-.App {
-  text-align: center;
-}
 
+/*
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
@@ -29,4 +27,70 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+/* MY CSS */
+.App {
+  display: table;
+  max-width: 600px;
+  margin: 20px auto 0;
+}
+
+.App tr {
+  padding: 10px 0;
+}
+
+.App th {
+  color: #D5DDE5;
+  background: #1b1e24;
+  border-bottom: 4px solid #9ea7af;
+  border-right: 1px solid #343a45;
+  font-size: 23px;
+  font-weight: 100;
+  padding: 24px;
+  text-align: left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align: middle;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.App td {
+  padding: 20px;
+  background: #ccc;
+  border: 1px solid #333;
+
+  font-family: 'PT Mono', monospace;
+}
+
+.App td:nth-of-type(1){
+  border-left-width: 2px;
+}
+.App td:nth-of-type(n+1){
+  border-bottom-width: 2px
+}
+.App td:nth-of-type(5){
+  border-right-width: 2px;
+}
+
+.App td:first-of-type {
+  background: #bbb
+}
+
+.App td a{
+  color: #ffff00;
+  cursor: pointer;
+  text-transform: uppercase;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.8);
+  font-weight: 700 !important;
+  font-size: 16px !important;
+  text-decoration: underline !important;
+}
+
+.App button {
+  background: #ffff00;
+}
+
+.App button:hover{
+  background: rgba(255, 255, 0, 0.3);
+  color: #fff
 }
