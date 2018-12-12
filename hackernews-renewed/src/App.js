@@ -30,6 +30,11 @@ const list = [
   },
 ];
 // # leanpub-end-insert
+function isSearched(searchTerm){
+  return function(item){
+    return item.title.toLowerCase().includes(searchTerm.toLowerCase());
+  }
+}
 
 class App extends Component {
   constructor(props){
@@ -37,9 +42,16 @@ class App extends Component {
 
     this.state = {
       list,
+      searchTerm: '',
     };
 
+    this.onSearchChange = this.onSearchChange.bind(this);
     this.onDismiss = this.onDismiss.bind(this);
+
+  }
+
+  onSearchChange (e) {
+    this.setState({ searchTerm: e.target.value });
   }
 
   onDismiss(id){
@@ -49,11 +61,13 @@ class App extends Component {
   }
 
   render() {
+    const {searchTerm, list} = this.state;
     return (
       <div className="App">
+
       {/* leanpub-start-insert */}
-      <tr><th colspan="5">REACTJS TOOLS</th></tr>
-      {this.state.list.map(item => {
+      <tr className="tableHeader"><th colspan="5">REACTJS TOOLS</th></tr>
+      {this.state.list.filter(isSearched(this.state.searchTerm)).map(item => {
           const onHandleDismiss = () =>
           this.onDismiss(item.objectID);
           return (
@@ -77,7 +91,20 @@ class App extends Component {
           }
         )}
       {/* leanpub-end-insert */}
+      <tr id="SearchForm">
+        <th colspan="5"><h2 className="SearchForm_Header">Search the List</h2>
+
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={this.onSearchChange}
+          pattern="^[a-zA-Z]+$"
+        />
+        <div className="footnote"><em>** Do not enter numbers</em></div>
+        </th>
+      </tr>
       </div>
+
     );
   }
 }
