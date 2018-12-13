@@ -54,29 +54,39 @@
   font-family: 'Source Code Pro', monospace;
 }
 
-.App td {
+.App .tableHeader-ruler {
+  margin-top: -2px;
+  z-index: 99;
+  background: #ffff00;
+  height: 2px;
+  padding: 0 !important;
+  border: 2px solid #ffff00;
+  border-right-color: #000;
+  border-left-color: #000;
+}
+
+.App #Tools > td {
   padding: 20px;
   background: #ccc;
   border: 1px solid #333;
-
   font-family: 'PT Mono', monospace;
 }
 
-.App td:nth-of-type(1){
+.App #Tools > td:nth-of-type(1){
   border-left-width: 2px;
 }
-.App td:nth-of-type(n+1){
+.App #Tools > td:nth-of-type(n+1){
   border-bottom-width: 2px
 }
-.App td:nth-of-type(5){
+.App #Tools > td:nth-of-type(5){
   border-right-width: 2px;
 }
 
-.App td:first-of-type {
+.App #Tools > td:first-of-type {
   background: #bbb
 }
 
-.App td a{
+.App #Tools > td a{
   color: #ffff00;
   cursor: pointer;
   text-transform: uppercase;
@@ -96,22 +106,26 @@
 }
 
 .App tr#SearchForm {
-  font-family: 'Source Code Pro';
+  font-family: 'Source Code Pro' !important;
   font-weight: 900;
   margin:20px 0;
-
 }
 
 .App tr#SearchForm .SearchForm_Header{
   background: #bbb;
-  padding: 10px 0 10px 20px;
+  padding: 10px 20px;
   border-bottom: 2px solid #333;
 }
 
 .App tr#SearchForm input {
   font-family: monospace;
   color: #1b1e24;
-  padding: 10px
+  padding: 10px;
+  width: 300px
+}
+
+.App tr#SearchForm input::placeholder {
+  color: rgba(25, 25, 25, 0.5);
 }
 
 .App tr#SearchForm input:invalid {
