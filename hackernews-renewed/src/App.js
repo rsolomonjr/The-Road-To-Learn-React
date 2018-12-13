@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 // # leanpub-start-insert
@@ -110,10 +109,7 @@ class Table extends Component {
     return (
       <div>
         {/* START OF THE MAIN APP */}
-        {list.filter(isSearched(pattern)).map(item => {
-            const onHandleDismiss = () =>
-            this.onDismiss(item.objectID);
-            return (
+        {list.filter(isSearched(pattern)).map(item =>
             <tr key={item.objectID} id="Tools">
                <td className="Book_Title">
                  <a href={item.url}>{item.title}</a>
@@ -127,8 +123,6 @@ class Table extends Component {
                </Button>
                </td>
              </tr>
-              );
-            }
           )}
         {/* END OF THE MAIN APP */}
       </div>
