@@ -103,29 +103,6 @@ const Search = ({ value, onChange }) =>
         </th>
       </tr>
     </div>
-{/*
-class Search extends Component {
-  render (){
-    const {value, onChange, children} = this.props;
-    return (
-      <div>
-      <tr id="SearchForm">
-        <th colspan="5"><h2 className="SearchForm_Header">Search the List</h2>
-        <input
-          type="text"
-          value={value}
-          onChange={onChange}
-          pattern="^[a-zA-Z]+$"
-          placeholder="Enter Title/Letters Here"
-        />
-        <div className="footnote"><em>** Do not enter numbers</em></div>
-        </th>
-      </tr>
-      </div>
-    );
-  }
-}
-*/}
 
 class Table extends Component {
   render () {
@@ -178,4 +155,5 @@ class Button extends Component {
     );
   }
 }
+
 export default App;
