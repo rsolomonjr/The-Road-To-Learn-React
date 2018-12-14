@@ -115,3 +115,8 @@ form#SearchForm .footnote{
 form#SearchForm button {
   margin: 0 10px
 }
+
+.App .button-more{
+  font-family: 'Source Code Pro' !important;
+  margin: 15px 0;
+}

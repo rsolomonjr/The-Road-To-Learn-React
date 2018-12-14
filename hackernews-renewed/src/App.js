@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import './App.css';
 
 //# API CODING
@@ -55,9 +56,8 @@ class App extends Component {
   }
 
   fetchSearchTopStories(searchTerm, page=0) {
-    fetch(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HPP}${DEFAULT_HPP}`)
-      .then(response => response.json())
-      .then(result => this.setSearchTopStories(result))
+    axios(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HPP}${DEFAULT_HPP}`)
+      .then(result => this.setSearchTopStories(result.data))
       .catch(e => this.setState({ e }));
   }
 
@@ -123,19 +123,21 @@ class App extends Component {
       <div className="App">
         <tr className="tableHeader">
           <th colSpan={5}>REACTJS TOOLS</th>
-          </tr>
+        </tr>
         <tr>
           <td className="tableHeader-ruler" colSpan={5}>
           </td>
         </tr>
-          { results ?
-            <Table
+          { error
+            ? <div className="interactions">
+                <p>A cat died. You failed this city.</p>
+              </div>
+              : <Table
               list={list}
               onDismiss={this.onDismiss}
             />
-            : null
           }
-          <Button onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}>
+          <Button className={`btn button-more`} onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}>
             More
           </Button>
           <Search
