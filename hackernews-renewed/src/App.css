@@ -1,35 +1,10 @@
 
-/*
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
-
 /* MY CSS */
+
+div.table {
+  margin: 0 auto;
+}
+
 .App {
   display: table;
   max-width: 600px;
@@ -87,52 +62,56 @@
 }
 
 .App #Tools > td a{
-  color: #ffff00;
+  color: #333;
   cursor: pointer;
   text-transform: uppercase;
-  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.8);
+  text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.8);
   font-weight: 700 !important;
   font-size: 16px !important;
   text-decoration: underline !important;
 }
 
-.App button {
+.App #Tools button {
   background: #ffff00;
 }
 
-.App button:hover{
+.App #Tools button:hover{
   background: rgba(255, 255, 0, 0.3);
   color: #fff
 }
 
-.App tr#SearchForm {
+form#SearchForm {
   font-family: 'Source Code Pro' !important;
   font-weight: 900;
   margin:20px 0;
 }
 
-.App tr#SearchForm .SearchForm_Header{
+form#SearchForm .SearchForm_Header{
   background: #bbb;
   padding: 10px 20px;
   border-bottom: 2px solid #333;
 }
 
-.App tr#SearchForm input {
+form#SearchForm input {
   font-family: monospace;
   color: #1b1e24;
   padding: 10px;
   width: 300px
 }
 
-.App tr#SearchForm input::placeholder {
+form#SearchForm input::placeholder {
   color: rgba(25, 25, 25, 0.5);
 }
 
-.App tr#SearchForm input:invalid {
+form#SearchForm input:invalid {
   background: hsla(0, 100%, 80%, 1);
 }
 
-.App tr#SearchForm .footnote{
+form#SearchForm .footnote{
   font-size: 10px;
   font-weight: 300;
+}
+
+form#SearchForm button {
+  margin: 0 10px
 }
