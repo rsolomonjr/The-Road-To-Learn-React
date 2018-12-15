@@ -80,6 +80,11 @@ div.table {
   color: #fff
 }
 
+.App .button-more{
+  font-family: 'Source Code Pro' !important;
+  margin: 15px 0;
+}
+
 form#SearchForm {
   font-family: 'Source Code Pro' !important;
   font-weight: 900;
@@ -116,7 +121,38 @@ form#SearchForm button {
   margin: 0 10px
 }
 
-.App .button-more{
-  font-family: 'Source Code Pro' !important;
-  margin: 15px 0;
+
+.interactions {
+  text-align: center;
+}
+
+.LoadingApp {
+  font-weight: 700;
+  margin: 20px auto;
+  width: 300px;
+  border: 2px solid #333;
+  background: #bbb;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  -webkit-animation: blink 3s step-end infinite;
+  -moz-animation: blink 3s step-end infinite;
+  -o-animation: blink 3s step-end infinite;
+  animation: blink 3s step-end infinite;
+}
+
+@-webkit-keyframes .LoadingApp {
+  67% { opacity: 0 }
+}
+
+@-moz-keyframes .LoadingApp {
+  67% { opacity: 0 }
+}
+
+@-o-keyframes .LoadingApp {
+  67% { opacity: 0 }
+}
+
+@keyframes .LoadingApp {
+  67% { opacity: 0 }
 }

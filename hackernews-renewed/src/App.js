@@ -3,15 +3,20 @@ import axios from 'axios';
 import './App.css';
 
 //# API CODING
-const DEFAULT_QUERY = 'redux';
-const DEFAULT_HPP = '25';
+const DEFAULT_QUERY = 'react context api';
+const DEFAULT_HPP = '10';
 const PATH_BASE = 'https://hn.algolia.com/api/v1';
 const PATH_SEARCH = '/search';
 const PARAM_SEARCH = 'query=';
 const PARAM_PAGE = 'page=';
 const PARAM_HPP = 'hitsPerPage=';
 
+//# LOADING
+const Loading = () =>
+  <div className="LoadingApp">Loading ... </div>
+
 class App extends Component {
+  _isMounted = false;
   constructor(props){
     super(props);
 
@@ -19,7 +24,8 @@ class App extends Component {
       result: null,
       searchKey: '',
       searchTerm: DEFAULT_QUERY,
-      error: null
+      error: null,
+      isLoading: false
     };
 
     this.needsToSearchTopStories = this.needsToSearchTopStories.bind(this);
@@ -51,20 +57,28 @@ class App extends Component {
       results: {
         ...results,
         [searchKey]: { hits: updatedHits, page }
-      }
+      },
+      isLoading: false
     });
   }
 
   fetchSearchTopStories(searchTerm, page=0) {
+    this.setState({isLoading: true});
     axios(`${PATH_BASE}${PATH_SEARCH}?${PARAM_SEARCH}${searchTerm}&${PARAM_PAGE}${page}&${PARAM_HPP}${DEFAULT_HPP}`)
-      .then(result => this.setSearchTopStories(result.data))
-      .catch(e => this.setState({ e }));
+      .then(result => this._isMounted && this.setSearchTopStories(result.data))
+      .catch(e => this._isMounted &&
+        this.setState({ e }));
   }
 
   componentDidMount() {
+    this._isMounted = true;
     const { searchTerm } = this.state;
     this.setState({ searchKey: searchTerm });
     this.fetchSearchTopStories(searchTerm);
+  }
+
+  componentWillMount() {
+    this._isMounted = false;
   }
 
   onSearchChange (e) {
@@ -99,7 +113,8 @@ class App extends Component {
           searchTerm,
           results,
           searchKey,
-          error
+          error,
+          isLoading
         } = this.state;
 
         const page = (
@@ -137,14 +152,20 @@ class App extends Component {
               onDismiss={this.onDismiss}
             />
           }
-          <Button className={`btn button-more`} onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}>
-            More
-          </Button>
-          <Search
-            value={searchTerm}
-            onChange={this.onSearchChange}
-            onSubmit={this.onSearchSubmit}
-          />
+          {
+            isLoading
+            ? <Loading />
+            : <Button
+                className={`btn button-more`}
+                onClick={() => this.fetchSearchTopStories(searchKey, page + 1)}>
+                  More
+              </Button>
+            }
+            <Search
+                value={searchTerm}
+                onChange={this.onSearchChange}
+                onSubmit={this.onSearchSubmit}
+            />
       </div>
       </div>
     );
